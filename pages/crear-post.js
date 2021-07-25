@@ -12,7 +12,7 @@ const initialState = { title: '', content: '' }
 
 function CreatePost() {
     const [post, setPost] = useState(initialState);
-    const { title, content } = post;
+    const { title, content, image_link } = post;
     const router = useRouter();
 
     function onChange(e) {
@@ -28,9 +28,9 @@ function CreatePost() {
         post.id = id;
         const { data } = await supabase
             .from('posts')
-            .insert([{ title, content, user_id: user.id, user_email: user.email }])
+            .insert([{ title, content, image_link, user_id: user.id, user_email: user.email }])
             .single()
-        router.push(`/post/${data.id}`)
+        router.push(`/posts/${data.id}`)
         
     }
     return (
@@ -41,6 +41,14 @@ function CreatePost() {
                 name="title"
                 placeholder="Título"
                 value={post.title}
+                className="border-b pb-2 text-lg my-4 focus:outline-none w-full font-light text-gray-500 placeholder-gray-500 y-2"
+            
+            />
+            <input type="text"
+                onChange={onChange}
+                name="image_link"
+                placeholder="https://dominio.com/imagen.jpg"
+                value={post.image_link}
                 className="border-b pb-2 text-lg my-4 focus:outline-none w-full font-light text-gray-500 placeholder-gray-500 y-2"
             
             />

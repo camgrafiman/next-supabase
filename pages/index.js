@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import noimage from '../public/assets/img/noimage.png'
 import { supabase } from '../api';
 
 export default function Home() {
@@ -24,6 +26,8 @@ export default function Home() {
           <Link key={post.id} href={`/posts/${post.id}`}>
             <div className="cursor-pointer border-b border-gray-300 mt-8 pb-4">
               <h2 className="text-xl font-semibold">{post.title}</h2>
+              {/* <Image src={post.image_link} width="300" height="200" className=" m-2 animate-pulse border-2 flex flex-row justify-self-center align-middle" alt="" /> */}
+              <img src={post.image_link} width="300" height="200" className=" m-2 animate-pulse border-2 flex flex-row justify-self-center align-middle" alt="" />
               <p className="text-gray-500 mt-2">Autor: {post.user_email}</p>
             </div>
             

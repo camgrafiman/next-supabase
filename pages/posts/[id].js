@@ -10,6 +10,7 @@ export default function Post({ post }) {
     return (
         <div>
             <h1 className="text-5xl mt-4 font-semibold tracking-wide">{post.title}</h1>
+            <img src={post.image_link} alt="img" className=" m-2 border-2 flex flex-row justify-self-center align-middle"/>
             <p className="text-sm font-light my-4">por: {post.user_email}</p>
             <div className="mt-8">
                 <ReactMarkdown className="prose" >
